@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './router/AppRoutingModule ';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './Header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { TopHeaderComponent } from './top-header/top-header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './layout/header/header.component';
+import { RecipesComponent } from './views/recipes/recipes.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, TopHeaderComponent],
-  imports: [BrowserModule],
+  declarations: [AppComponent, HeaderComponent, RecipesComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
