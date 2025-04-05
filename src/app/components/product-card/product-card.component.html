@@ -1,0 +1,36 @@
+<div *ngIf="product != null">
+  <div class="product-card">
+    <img
+      [src]="product.thumbnail"
+      alt="{{ product.title }}"
+      class="product-card-image"
+    />
+    <h2 class="product-card-title">{{ product.title }}</h2>
+    <div class="product-card-rating">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="rating star"
+        fontIcon="star"
+      ></mat-icon>
+      <span> {{ product.rating }} - ({{ product.reviews.length }}) </span>
+    </div>
+    <div class="product-card-stock-price">
+      <div class="product-card-price">
+        <span [appLineThrough]="product.discountPercentage > 0">
+          ${{ product.price }}</span
+        >
+        <span>
+          - ${{
+            CalculateDiscountPrice(product.price, product.discountPercentage)
+          }}
+        </span>
+      </div>
+      <div
+        [appChangeColor]="product.stock <= 5 ? 'red' : ''"
+        class="product-card-price"
+      >
+        {{ product.stock }} in stock
+      </div>
+    </div>
+  </div>
+</div>

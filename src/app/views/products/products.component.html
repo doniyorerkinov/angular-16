@@ -1,1 +1,15 @@
-<p>products works!</p>
+<div class="products-header">
+  <app-search [value]="search" (search)="updateSearch($event)" />
+  <button (click)="openModal()" mat-raised-button color="primary">
+    Add Product
+  </button>
+</div>
+<div class="products-container">
+  <div *ngFor="let product of pagination.products">
+    <product-card [product]="product"></product-card>
+  </div>
+</div>
+
+<modal *ngIf="isModalOpen()" (close)="closeModal()" title="Add Product">
+  <div>whats is up</div>
+</modal>

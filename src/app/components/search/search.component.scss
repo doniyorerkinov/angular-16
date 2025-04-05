@@ -1,0 +1,25 @@
+.search-container {
+    width: 100%;
+    max-width: 400px;
+    height: 4vh;
+    position: relative;
+    border-radius: 32px;
+    display: flex;
+    button {
+        height: 100%;
+        right: 0;
+        top: 0;
+        border-radius: 0 5px 5px 0;
+        padding: 8px 10px !important;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+    input {
+        height: 100%;
+        padding: 0 10px;
+        border-radius: 5px 0 0 5px;
+        border: 1px solid #ccc;
+        outline: none;
+        border: none;
+    }
+}

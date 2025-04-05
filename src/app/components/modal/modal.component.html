@@ -1,0 +1,26 @@
+<div class="modal-overlay" (click)="onOverlayClick($event)">
+  <div class="modal" (click)="onModalClick($event)">
+    <!-- Header -->
+    <div class="modal-header">
+      <span>{{ title || "Header" }}</span>
+      <mat-icon
+        (click)="onOverlayClick($event)"
+        aria-hidden="false"
+        aria-label="X"
+        fontIcon="close"
+        style="cursor: pointer"
+      ></mat-icon>
+    </div>
+    <!-- Main Part -->
+    <main class="modal-main">
+      <ng-content></ng-content>
+    </main>
+    <!-- Footer -->
+    <div class="modal-footer">
+      <button mat-raised-button color="warn" (click)="onOverlayClick($event)">
+        Close
+      </button>
+      <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+    </div>
+  </div>
+</div>
