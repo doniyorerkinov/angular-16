@@ -12,9 +12,15 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   // GET: Retrieve all Products
-  getProducts(limit: number, skip: number): Observable<IPagination<IProduct>> {
+  getProducts(
+    limit: number,
+    skip: number,
+    catagory?: string
+  ): Observable<IPagination<IProduct>> {
     return this.http.get<IPagination<IProduct>>(
-      `${this.apiUrl}?limit=${limit}&skip=${skip}`
+      `${this.apiUrl}${
+        catagory ? `/category/${catagory}` : ''
+      }?limit=${limit}&skip=${skip}`
     );
   }
 

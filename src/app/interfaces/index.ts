@@ -69,3 +69,8 @@ interface IMeta {
   barcode: string | number;
   qrCode: string;
 }
+
+export interface ISelect {
+  text?: string;
+  value: number | string | null;
+}

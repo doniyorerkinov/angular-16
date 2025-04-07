@@ -1,5 +1,13 @@
 <div class="products-header">
-  <app-search [value]="search" (search)="updateSearch($event)" />
+  <div class="flex align-center gap-4">
+    <app-search [value]="search" (search)="updateSearch($event)" />
+    <app-select
+      [options]="categories"
+      [label]="'Category List'"
+      [idKey]="'categories-list'"
+      (onChange)="handleCategoryChange($event)"
+    />
+  </div>
   <button (click)="openModal()" mat-raised-button color="primary">
     Add Product
   </button>
