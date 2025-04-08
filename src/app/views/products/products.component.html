@@ -15,7 +15,10 @@
 </div>
 <div class="products-container">
   <div *ngFor="let product of pagination.products">
-    <product-card [product]="product"></product-card>
+    <product-card
+      (click)="goToProductDetail(product.id)"
+      [product]="product"
+    ></product-card>
   </div>
 </div>
 

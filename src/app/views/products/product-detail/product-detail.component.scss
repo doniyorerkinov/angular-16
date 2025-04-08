@@ -1,0 +1,103 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+.product-detail {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+  &-head {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 3rem;
+    padding: 20px;
+    &-img {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+      }
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      &-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+      }
+      &-price {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #000;
+        span {
+          font-weight: 700;
+          color: #333;
+        }
+      }
+      &-desc {
+        font-size: 1rem;
+        color: #555;
+      }
+      &-tags {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        span {
+          font-weight: 700;
+          color: #333;
+        }
+        div {
+          padding: 0.5rem;
+          border-radius: .25rem;
+          background: white;
+          border: none;
+        }
+      }
+    }
+  }
+  &-ratings {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 20px;
+    &-review {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #caccc3;
+      &-user {
+        display: flex;
+        flex-direction: column;
+        .username {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #333;
+        }
+        .email {
+          font-size: 1rem;
+          font-weight: 500;
+          color: #555;
+        }
+      }
+      &-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        span {
+          color: #1225cf;
+        }
+      }
+    }
+  }
+}

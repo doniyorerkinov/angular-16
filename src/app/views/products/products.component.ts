@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { Subscription } from 'rxjs';
 import { SelectComponent } from 'src/app/components/Form/select/select.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -39,7 +40,7 @@ export class ProductsComponent {
   categories: ISelect[] = [];
   selectedCategory = signal<string>('');
 
-  constructor() {
+  constructor(private router: Router) {
     effect(() => {
       const currentCategory = this.selectedCategory();
       if (currentCategory) {
@@ -107,5 +108,9 @@ export class ProductsComponent {
 
   closeModal() {
     this.isModalOpen.set(false);
+  }
+
+  goToProductDetail(id: number) {
+    this.router.navigate(['/products', id]);
   }
 }

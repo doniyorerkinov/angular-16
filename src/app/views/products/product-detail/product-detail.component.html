@@ -1,0 +1,43 @@
+<div class="product-detail" *ngIf="product">
+  <div class="product-detail-head">
+    <div class="product-detail-head-img">
+      <img [src]="product.thumbnail" />
+    </div>
+    <div class="product-detail-head-info">
+      <h4 class="product-detail-head-info-title">{{ product.title }}</h4>
+      <p class="product-detail-head-info-desc">{{ product.description }}</p>
+      <div class="product-detail-head-info-price">
+        <span>Price:</span> $ {{ product.price }} -
+        {{ product.discountPercentage }}% off
+      </div>
+      <div class="product-detail-head-info-price">
+        <span>Brand:</span> {{ product.brand }}
+      </div>
+      <div class="product-detail-head-info-price">
+        <span>Category:</span> {{ product.category }}
+      </div>
+      <div class="product-detail-head-info-tags">
+        <span>Tags:</span>
+        <div *ngFor="let tag of product.tags">{{ tag }}</div>
+      </div>
+      <div class="product-detail-head-info-price">
+        <span>Rating:</span> {{ product.rating }}
+      </div>
+    </div>
+  </div>
+  <div class="product-detail-ratings">
+    <h4>Reviews: {{ product.reviews.length }}</h4>
+    <div *ngFor="let review of product.reviews">
+      <div class="product-detail-ratings-review">
+        <div class="product-detail-ratings-review-user">
+          <span class="username">{{ review?.reviewerName }}</span>
+          <span class="email">{{ review?.reviewerEmail }}</span>
+        </div>
+        <div class="product-detail-ratings-review-content">
+          <p>{{ review.comment }}</p>
+          <span>Rating: {{ review.rating }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
