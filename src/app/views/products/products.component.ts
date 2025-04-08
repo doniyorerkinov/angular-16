@@ -49,7 +49,14 @@ export class ProductsComponent {
   }
 
   updateSearch(newValue: string): void {
-    this.search = newValue;
+    console.log(newValue);
+    console.log(this.search);
+    this.search =
+      typeof newValue == 'string'
+        ? newValue
+        : // @ts-ignore
+          (newValue.target as HTMLInputElement).value;
+    this.selectedCategory.set('');
     this.loadProducts();
   }
 
@@ -58,7 +65,8 @@ export class ProductsComponent {
       .getProducts(
         this.pagination.limit,
         this.pagination.skip,
-        this.selectedCategory()
+        this.selectedCategory(),
+        this.search
       )
       .subscribe((data) => {
         this.pagination.products = data.products;

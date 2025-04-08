@@ -1,4 +1,11 @@
-<div class="search-container">
-  <input [(ngModel)]="searchedText" type="search" />
-  <button (click)="onSearch()" mat-flat-button color="primary">Primary</button>
-</div>
+<mat-form-field class="search-container">
+  <input
+    [(ngModel)]="searchedText"
+    matInput
+    type="search"
+    (keydown)="onSearch()"
+  />
+</mat-form-field>
+<button class="button" (click)="onSearch()" mat-flat-button color="primary">
+  Search
+</button>

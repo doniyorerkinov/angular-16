@@ -5,6 +5,7 @@
       [options]="categories"
       [label]="'Category List'"
       [idKey]="'categories-list'"
+      [selected]="selectedCategory()"
       (onChange)="handleCategoryChange($event)"
     />
   </div>

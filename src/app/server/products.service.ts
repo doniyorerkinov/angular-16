@@ -15,12 +15,13 @@ export class ProductsService {
   getProducts(
     limit: number,
     skip: number,
-    catagory?: string
+    catagory?: string,
+    search: string = ''
   ): Observable<IPagination<IProduct>> {
     return this.http.get<IPagination<IProduct>>(
-      `${this.apiUrl}${
-        catagory ? `/category/${catagory}` : ''
-      }?limit=${limit}&skip=${skip}`
+      `${this.apiUrl}${catagory ? `/category/${catagory}` : ''}${
+        search ? `/search?q=${search}&` : '?'
+      }limit=${limit}&skip=${skip}`
     );
   }
 

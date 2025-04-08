@@ -22,13 +22,10 @@ export class SelectComponent {
   @Input() label: string = '';
   @Input() idKey?: string = '';
   @Input() options: ISelect[] = [];
+  @Input() selected: string = '';
   @Output() onChange: EventEmitter<string> = new EventEmitter<string>();
 
-  selected: string = '';
-
   onSelectionChange(): void {
-    console.log(this.selected);
-
     this.onChange.emit(this.selected); // Emit the selected value
   }
 }
