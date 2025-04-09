@@ -9,7 +9,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './views/products/product-detail/product-detail.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, RecipesComponent, ProductDetailComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    RecipesComponent,
+    ProductDetailComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

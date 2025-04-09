@@ -10,6 +10,7 @@ import { SearchComponent } from 'src/app/components/search/search.component';
 import { Subscription } from 'rxjs';
 import { SelectComponent } from 'src/app/components/Form/select/select.component';
 import { Router } from '@angular/router';
+import { LoaderComponent } from 'src/app/components/loader/loader.component';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -22,6 +23,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     SearchComponent,
     SelectComponent,
+    LoaderComponent,
   ],
 })
 export class ProductsComponent {
@@ -35,6 +37,7 @@ export class ProductsComponent {
     skip: 0,
     limit: 40,
   };
+  loading = signal<boolean>(false);
   isModalOpen = signal<boolean>(false);
   search: string = '';
   categories: ISelect[] = [];
@@ -50,8 +53,6 @@ export class ProductsComponent {
   }
 
   updateSearch(newValue: string): void {
-    console.log(newValue);
-    console.log(this.search);
     this.search =
       typeof newValue == 'string'
         ? newValue
@@ -62,6 +63,7 @@ export class ProductsComponent {
   }
 
   loadProducts(): void {
+    this.loading.set(true);
     this.subscribtion = this.productSercive
       .getProducts(
         this.pagination.limit,
@@ -72,13 +74,12 @@ export class ProductsComponent {
       .subscribe((data) => {
         this.pagination.products = data.products;
         this.pagination.limit = data.limit;
+        this.loading.set(false);
       });
   }
 
   handleCategoryChange(selectedCategory: string): void {
-    console.log('Selected category:', selectedCategory);
     this.selectedCategory.set(selectedCategory);
-    // You can now use the selected category for further processing
   }
 
   ngOnInit(): void {

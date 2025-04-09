@@ -1,26 +1,31 @@
-<div class="products-header">
-  <div class="flex align-center gap-4">
-    <app-search [value]="search" (search)="updateSearch($event)" />
-    <app-select
-      [options]="categories"
-      [label]="'Category List'"
-      [idKey]="'categories-list'"
-      [selected]="selectedCategory()"
-      (onChange)="handleCategoryChange($event)"
-    />
+<app-loader *ngIf="loading(); else elseBlock"></app-loader>
+<ng-template #elseBlock>
+  <div class="products-header">
+    <div class="flex align-center gap-4">
+      <app-search [value]="search" (search)="updateSearch($event)" />
+      <app-select
+        [options]="categories"
+        [label]="'Category List'"
+        [idKey]="'categories-list'"
+        [selected]="selectedCategory()"
+        (onChange)="handleCategoryChange($event)"
+      />
+    </div>
+    <div class="products-header-actions">
+      <button (click)="openModal()" mat-raised-button color="primary">
+        Add Product (Template Form)
+      </button>
+    </div>
   </div>
-  <button (click)="openModal()" mat-raised-button color="primary">
-    Add Product
-  </button>
-</div>
-<div class="products-container">
-  <div *ngFor="let product of pagination.products">
-    <product-card
-      (click)="goToProductDetail(product.id)"
-      [product]="product"
-    ></product-card>
+  <div class="products-container">
+    <div *ngFor="let product of pagination.products">
+      <product-card
+        (click)="goToProductDetail(product.id)"
+        [product]="product"
+      ></product-card>
+    </div>
   </div>
-</div>
+</ng-template>
 
 <modal *ngIf="isModalOpen()" (close)="closeModal()" title="Add Product">
   <div>whats is up</div>
