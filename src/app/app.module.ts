@@ -8,6 +8,7 @@ import { RecipesComponent } from './views/recipes/recipes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './views/products/product-detail/product-detail.component';
+import { AddProductComponent } from './views/products/add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,

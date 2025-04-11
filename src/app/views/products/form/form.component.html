@@ -1,81 +1,85 @@
 <form #dynamicForm="ngForm" (ngSubmit)="onSubmit(formData)">
-  <div *ngFor="let field of formFields">
-    <!-- Text Input Field -->
-    <mat-form-field
-      *ngIf="
-        field.type === 'input' &&
-        field.inputType != 'checkbox' &&
-        field.inputType != 'textarea'
-      "
-      class="form-field"
-    >
-      <mat-label>{{ field.label }}</mat-label>
-      <input
-        matInput
-        [(ngModel)]="formData[field.name]"
-        name="{{ field.name }}"
-        [type]="field.inputType"
-        [placeholder]="field.placeholder"
-        [required]="field.isRequired"
-      />
-      <mat-error *ngIf="dynamicForm.submitted && !formData[field.name]">
-        {{ field.errorText }}
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field
-      *ngIf="field.type === 'input' && field.inputType == 'textarea'"
-      class="form-field"
-    >
-      <mat-label>{{ field.label }}</mat-label>
-      <textarea
-        matInput
-        [(ngModel)]="formData[field.name]"
-        name="{{ field.name }}"
-        [type]="field.inputType"
-        [placeholder]="field.placeholder"
-        [required]="field.isRequired"
-      ></textarea>
-      <mat-error *ngIf="dynamicForm.submitted && !formData[field.name]">
-        {{ field.errorText }}
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Select Dropdown Field -->
-    <mat-form-field *ngIf="field.type === 'select'" class="form-field">
-      <mat-label>{{ field.label }}</mat-label>
-      <mat-select
-        [(ngModel)]="formData[field.name]"
-        name="{{ field.name }}"
-        [required]="field.isRequired"
+  <div [ngClass]="gridOrFlex === 'grid' ? 'form-grid' : 'form-flex'">
+    <div *ngFor="let field of formFields">
+      <!-- Text Input Field -->
+      <mat-form-field
+        *ngIf="
+          field.type === 'input' &&
+          field.inputType != 'checkbox' &&
+          field.inputType != 'textarea'
+        "
+        class="form-field"
       >
-        <mat-option *ngFor="let option of field.options" [value]="option.value">
-          {{ option.text }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="dynamicForm.submitted && !formData[field.name]">
-        {{ field.errorText }}
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Checkbox Field -->
-    <div
-      *ngIf="field.type === 'input' && field.inputType === 'checkbox'"
-      class="checkbox-container"
-      style="display: flex; justify-content: space-between"
-    >
-      <mat-checkbox
-        [(ngModel)]="formData[field.name]"
-        name="{{ field.name }}"
-        [required]="field.isRequired"
+        <mat-label>{{ field.label }}</mat-label>
+        <input
+          matInput
+          [(ngModel)]="formData[field.name]"
+          name="{{ field.name }}"
+          [type]="field.inputType"
+          [placeholder]="field.placeholder"
+          [required]="field.isRequired"
+        />
+        <mat-error *ngIf="dynamicForm.submitted && !formData[field.name]">
+          {{ field.errorText }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        *ngIf="field.type === 'input' && field.inputType == 'textarea'"
+        class="form-field"
       >
-        {{ field.label }}
-      </mat-checkbox>
-      <mat-error *ngIf="dynamicForm.submitted && !formData[field.name]">
-        {{ field.errorText }}
-      </mat-error>
+        <mat-label>{{ field.label }}</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="formData[field.name]"
+          name="{{ field.name }}"
+          [type]="field.inputType"
+          [placeholder]="field.placeholder"
+          [required]="field.isRequired"
+        ></textarea>
+        <mat-error *ngIf="dynamicForm.submitted && !formData[field.name]">
+          {{ field.errorText }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Select Dropdown Field -->
+      <mat-form-field *ngIf="field.type === 'select'" class="form-field">
+        <mat-label>{{ field.label }}</mat-label>
+        <mat-select
+          [(ngModel)]="formData[field.name]"
+          name="{{ field.name }}"
+          [required]="field.isRequired"
+        >
+          <mat-option
+            *ngFor="let option of field.options"
+            [value]="option.value"
+          >
+            {{ option.text }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="dynamicForm.submitted && !formData[field.name]">
+          {{ field.errorText }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Checkbox Field -->
+      <div
+        *ngIf="field.type === 'input' && field.inputType === 'checkbox'"
+        class="checkbox-container"
+        style="display: flex; justify-content: space-between"
+      >
+        <mat-checkbox
+          [(ngModel)]="formData[field.name]"
+          name="{{ field.name }}"
+          [required]="field.isRequired"
+        >
+          {{ field.label }}
+        </mat-checkbox>
+        <mat-error *ngIf="dynamicForm.submitted && !formData[field.name]">
+          {{ field.errorText }}
+        </mat-error>
+      </div>
     </div>
   </div>
-
   <div class="form-actions">
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </div>

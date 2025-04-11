@@ -13,7 +13,7 @@ export const TEMPLATE_FORM_FIELDS: IFormField[] = [
   {
     label: 'Category',
     name: 'category',
-    isRequired: true,
+    isRequired: false,
     errorText: 'Category is required',
     inputType: 'text',
     placeholder: 'Select your Category',

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -24,11 +24,14 @@ import { IFormField } from 'src/app/interfaces';
   styleUrls: ['./form.component.scss'],
 })
 export class StaticTemplateFormComponent {
+  @Input() gridOrFlex: string = '';
   @Input() formFields: IFormField[] = [];
+  @Output() submit = new EventEmitter<void>();
   formData: any = {};
 
   // Called when the form is submitted
   onSubmit(form: any) {
     console.log('Form Submitted!', this.formData);
+    console.log('Form Submitted!', form);
   }
 }

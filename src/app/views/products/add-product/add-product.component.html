@@ -1,0 +1,11 @@
+<div class="add-product-header">
+  <h2>Add Product</h2>
+  <button (click)="goBack()" mat-raised-button color="warn">Back</button>
+</div>
+<div class="add-product-body">
+  <template-form
+    class="add-product-body-form"
+    [formFields]="formFields"
+    [gridOrFlex]="'grid'"
+  ></template-form>
+</div>
