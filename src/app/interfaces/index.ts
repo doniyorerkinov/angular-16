@@ -74,3 +74,14 @@ export interface ISelect {
   text?: string;
   value: number | string | null;
 }
+
+export interface IFormField {
+  label: string;
+  name: string;
+  isRequired: boolean;
+  errorText: string;
+  inputType: string;
+  placeholder: string;
+  type?: string;
+  options?: ISelect[];
+}

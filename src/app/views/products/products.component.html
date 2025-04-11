@@ -27,6 +27,13 @@
   </div>
 </ng-template>
 
-<modal *ngIf="isModalOpen()" (close)="closeModal()" title="Add Product">
-  <div>whats is up</div>
+<modal
+  *ngIf="isModalOpen()"
+  (close)="closeModal()"
+  [showFooter]="false"
+  title="Add Product"
+>
+  <div style="padding-bottom: 20px">
+    <template-form [formFields]="formFields"></template-form>
+  </div>
 </modal>

@@ -16,7 +16,7 @@
       <ng-content></ng-content>
     </main>
     <!-- Footer -->
-    <div class="modal-footer">
+    <div *ngIf="showFooter" class="modal-footer">
       <button mat-raised-button color="warn" (click)="onOverlayClick($event)">
         Close
       </button>

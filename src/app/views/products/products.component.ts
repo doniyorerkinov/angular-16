@@ -1,7 +1,8 @@
+import { StaticTemplateFormComponent } from './form/form.component';
 import { ReferencesService } from './../../server/references.service';
 import { Component, inject, signal, effect } from '@angular/core';
 import { ProductsService } from 'src/app/server/products.service';
-import { IPagination, ISelect } from 'src/app/interfaces';
+import { IFormField, IPagination, ISelect } from 'src/app/interfaces';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
@@ -11,12 +12,15 @@ import { Subscription } from 'rxjs';
 import { SelectComponent } from 'src/app/components/Form/select/select.component';
 import { Router } from '@angular/router';
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
+import { TEMPLATE_FORM_FIELDS } from 'src/app/configs/form-filds.config';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
   standalone: true,
   imports: [
+    StaticTemplateFormComponent,
     ProductCardComponent,
     CommonModule,
     ModalComponent,
@@ -38,11 +42,11 @@ export class ProductsComponent {
     limit: 40,
   };
   loading = signal<boolean>(false);
-  isModalOpen = signal<boolean>(false);
+  isModalOpen = signal<boolean>(true);
   search: string = '';
   categories: ISelect[] = [];
   selectedCategory = signal<string>('');
-
+  formFields: IFormField[] = TEMPLATE_FORM_FIELDS;
   constructor(private router: Router) {
     effect(() => {
       const currentCategory = this.selectedCategory();
